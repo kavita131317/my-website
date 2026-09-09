@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jaipur - The Pink City</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff8f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #8e3b46;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffd6a5;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd6a5;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            height: 600px;
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url("https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 65px;
+            margin-bottom: 15px;
+            text-shadow: 2px 3px 5px #000;
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 30px;
+            background: #e76f51;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #c44536;
+            transform: scale(1.05);
+        }
+
+        /* ================= COMMON SECTION ================= */
+
+        section {
+            padding: 70px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: #8e3b46;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* ================= IMAGE ROW ================= */
+
+        .image-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .image-box {
+            height: 260px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .image-box:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: #f8e8e3;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .about-text h2 {
+            color: #8e3b46;
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* ================= PLACES ================= */
+
+        .places {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+            transition: 0.3s;
+        }
+
+        .place-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .place-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .place-content {
+            padding: 20px;
+        }
+
+        .place-content h3 {
+            color: #8e3b46;
+            margin-bottom: 8px;
+        }
+
+        /* ================= FOOD ================= */
+
+        .food-section {
+            background: #fff0eb;
+        }
+
+        .food-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .food-card {
+            background: white;
+            text-align: center;
+            padding-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .food-card h3 {
+            margin-top: 15px;
+            color: #8e3b46;
+        }
+
+        /* ================= CULTURE ================= */
+
+        .culture {
+            text-align: center;
+            background: #8e3b46;
+            color: white;
+        }
+
+        .culture h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .culture p {
+            max-width: 850px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #2d1e20;
+            color: white;
+            padding: 50px 7% 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        footer h3 {
+            color: #ffd6a5;
+            margin-bottom: 15px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer ul li {
+            margin-bottom: 8px;
+        }
+
+        footer ul li a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        footer ul li a:hover {
+            color: #ffd6a5;
+        }
+
+        .copyright {
+            border-top: 1px solid #555;
+            text-align: center;
+            padding-top: 20px;
+            color: #bbb;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 45px;
+            }
+
+            .image-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .places {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .food-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero {
+                height: 500px;
+            }
+
+            .hero-content h1 {
+                font-size: 38px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .image-row,
+            .places,
+            .food-container,
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 50px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            Jaipur<span>City</span>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#places">Places</a></li>
+                <li><a href="#food">Food</a></li>
+                <li><a href="#culture">Culture</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Welcome to Jaipur</h1>
+
+            <p>
+                Discover the beauty of the Pink City
+            </p>
+
+            <a href="#places" class="btn">
+                Explore Jaipur
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= JAIPUR GALLERY ================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>Beautiful Jaipur</h2>
+
+            <p>
+                Explore the colors, architecture and heritage of Rajasthan
+            </p>
+
+        </div>
+
+
+        <div class="image-row">
+
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=800&q=80"
+                     alt="Jaipur Palace">
+            </div>
+
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=800&q=80"
+                     alt="Hawa Mahal Jaipur">
+            </div>
+
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09d?auto=format&fit=crop&w=800&q=80"
+                     alt="Amber Fort Jaipur">
+            </div>
+
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80"
+                     alt="Jaipur Architecture">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about" id="about">
+
+        <div class="about-container">
+
+            <div class="about-image">
+
+                <img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09d?auto=format&fit=crop&w=1000&q=80"
+                     alt="Jaipur Fort">
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h2>About Jaipur</h2>
+
+                <p>
+                    Jaipur is the capital city of Rajasthan and is popularly
+                    known as the <strong>Pink City</strong>.
+                </p>
+
+                <p>
+                    Founded in 1727 by Maharaja Sawai Jai Singh II, Jaipur
+                    is famous for its magnificent forts, royal palaces,
+                    colorful markets and rich cultural heritage.
+                </p>
+
+                <p>
+                    The city is an important part of India's Golden Triangle,
+                    along with Delhi and Agra.
+                </p>
+
+                <a href="#places" class="btn">
+                    Discover More
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TOURIST PLACES ================= -->
+
+    <section id="places">
+
+        <div class="section-title">
+
+            <h2>Famous Places in Jaipur</h2>
+
+            <p>
+                Visit the most beautiful and historic attractions
+            </p>
+
+        </div>
+
+
+        <div class="places">
+
+            <div class="place-card">
+
+                <img src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=900&q=80"
+                     alt="Hawa Mahal">
+
+                <div class="place-content">
+
+                    <h3>Hawa Mahal</h3>
+
+                    <p>
+                        The iconic Palace of Winds is one of Jaipur's
+                        most famous landmarks.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="place-card">
+
+                <img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09d?auto=format&fit=crop&w=900&q=80"
+                     alt="Amber Fort">
+
+                <div class="place-content">
+
+                    <h3>Amber Fort</h3>
+
+                    <p>
+                        A magnificent hilltop fort known for its
+                        beautiful architecture and royal history.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="place-card">
+
+                <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=900&q=80"
+                     alt="City Palace">
+
+                <div class="place-content">
+
+                    <h3>City Palace</h3>
+
+                    <p>
+                        Explore the grand royal residence and
+                        museums of Jaipur.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="place-card">
+
+                <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80"
+                     alt="Jantar Mantar">
+
+                <div class="place-content">
+
+                    <h3>Jantar Mantar</h3>
+
+                    <p>
+                        A historic astronomical observatory built
+                        by Maharaja Jai Singh II.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="place-card">
+
+                <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80"
+                     alt="Jaigarh Fort">
+
+                <div class="place-content">
+
+                    <h3>Jaigarh Fort</h3>
+
+                    <p>
+                        A spectacular fort offering beautiful
+                        views of Jaipur.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="place-card">
+
+                <img src="https://images.unsplash.com/photo-1606298855672-3efb63017be8?auto=format&fit=crop&w=900&q=80"
+                     alt="Nahargarh Fort">
+
+                <div class="place-content">
+
+                    <h3>Nahargarh Fort</h3>
+
+                    <p>
+                        Famous for its hilltop location and
+                        panoramic city views.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= JAIPUR FOOD ================= -->
+
+    <section class="food-section" id="food">
+
+        <div class="section-title">
+
+            <h2>Taste of Jaipur</h2>
+
+            <p>
+                Experience the delicious flavors of Rajasthan
+            </p>
+
+        </div>
+
+
+        <div class="food-container">
+
+            <div class="food-card">
+
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"
+                     alt="Dal Baati">
+
+                <h3>Dal Baati Churma</h3>
+
+            </div>
+
+
+            <div class="food-card">
+
+                <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=700&q=80"
+                     alt="Rajasthani Food">
+
+                <h3>Rajasthani Thali</h3>
+
+            </div>
+
+
+            <div class="food-card">
+
+                <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=700&q=80"
+                     alt="Indian Sweets">
+
+                <h3>Ghewar</h3>
+
+            </div>
+
+
+            <div class="food-card">
+
+                <img src="https://images.unsplash.com/photo-1626776876729-bab4364e2c5d?auto=format&fit=crop&w=700&q=80"
+                     alt="Indian Food">
+
+                <h3>Pyaaz Kachori</h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CULTURE ================= -->
+
+    <section class="culture" id="culture">
+
+        <h2>Experience Jaipur Culture</h2>
+
+        <p>
+            Jaipur is a wonderful combination of royal traditions,
+            colorful festivals, folk music, traditional handicrafts,
+            delicious food and beautiful Rajasthani art. From
+            vibrant bazaars to magnificent palaces, every corner
+            of Jaipur tells a story of Rajasthan's rich heritage.
+        </p>
+
+        <br>
+
+        <a href="#contact" class="btn">
+            Plan Your Visit
+        </a>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="contact">
+
+        <div class="footer-container">
+
+            <div>
+
+                <h3>Jaipur City</h3>
+
+                <p>
+                    Discover the royal charm, colorful culture
+                    and historical beauty of the Pink City.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <ul>
+
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Jaipur</a></li>
+                    <li><a href="#places">Tourist Places</a></li>
+                    <li><a href="#food">Food</a></li>
+                    <li><a href="#culture">Culture</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>Contact</h3>
+
+                <ul>
+
+                    <li>📍 Jaipur, Rajasthan, India</li>
+                    <li>📞 +91 98765 43210</li>
+                    <li>✉️ info@jaipurcity.com</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            <p>
+                © 2026 Jaipur City. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
