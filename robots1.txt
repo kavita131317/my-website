@@ -1,3 +1,3 @@
 User-agent:*
 Allow:/
-Sitemap:https://my-website-h6vt.onrender.com//sitemap1.xml
+Sitemap:https://my-website-h6vt.onrender.com/Best-tour%20&%20travel-services%20-jaipur.html//sitemap1.xml
